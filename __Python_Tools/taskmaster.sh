@@ -2237,6 +2237,16 @@ quick_resume() {
     
     log_step "Quick resume for project: $project_name"
     
+    # --- CSM README Resume Integration ---
+    local RESUME_SCRIPT="/workspace/app/resume_readme_session.sh"
+    if [[ -f "$RESUME_SCRIPT" ]]; then
+        log_step "Running CSM README resume analysis..."
+        bash "$RESUME_SCRIPT" 2>&1 | head -60
+    else
+        log_warn "README resume script not found at $RESUME_SCRIPT"
+    fi
+    # --- End CSM README Integration ---
+    
     local super_list=$(cat "$SUPER_LIST_FILE")
     local project=$(echo "$super_list" | jq --arg name "$project_name" '.projects[$name]')
     
