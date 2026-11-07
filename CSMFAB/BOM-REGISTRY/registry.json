@@ -5,6 +5,19 @@
   "generated_at": "2026-07-06T03:27:00Z",
   "cross_pollination_savings": "18-34%",
   "total_phase1_cost": 17266.05,
+  "consolidation": {
+    "consolidated_at": "2026-11-07T01:16:28Z",
+    "sources": [
+      "CSMWip/12_AegisOutfitFabricator (499 files)",
+      "CSMMetal (85 files)",
+      "CSMPro (1376 files)",
+      "CSMQuantum (41 files)",
+      "CSMWip/CSMFinancialAim (5 files)",
+      "CSMWip/CSMMinesMagnets (370 files)"
+    ],
+    "consolidated_dir": "CSMFAB/_CONSOLIDATED/",
+    "total_consolidated_files": 2376
+  },
   "materials": [
     {
       "id": "BFRP-Elium-001",
@@ -69,6 +82,99 @@
       "supplier": "Drexel Nanomaterials",
       "unit_cost_usd": 250.00,
       "unit": "g"
+    },
+    {
+      "id": "MXene-Ti3C2Tx-005b",
+      "name": "MXene Ti₃C₂Tₓ EMI Shielding Layer (Quantum R&D)",
+      "layer": 5,
+      "thickness_um": 45,
+      "tolerance_um": 2,
+      "emi_se_db": 92,
+      "frequency_range": "1 kHz - 10 GHz",
+      "temperature_range_C": "-40 to +125",
+      "shared_by": ["CSMQuantum-01", "Aegis-C", "Stellar-Tint", "PET-SAFE", "Silence-Block"],
+      "supplier": "Drexel Nanomaterials",
+      "unit_cost_usd": 55.00,
+      "unit": "g",
+      "note": "In-house production claim from CSMQuantum/01-MXene-Shielding-Optimization; unverified vs. market $250/g"
+    },
+    {
+      "id": "ZrB2SiC-006",
+      "name": "ZrB₂-SiC Ceramic Composite",
+      "layer": 2,
+      "density_g_cm3": 4.8,
+      "thermal_shock_delta_T_C": 800,
+      "emi_se_db": 70,
+      "shared_by": ["CSMQuantum-02", "Aegis-C", "Ulnar-Rest", "Mag-Float"],
+      "supplier": "In-house / CoorsTek",
+      "unit_cost_usd": 85.00,
+      "unit": "kg",
+      "note": "From CSMQuantum/02-ZrB2-SiC-Composite-Design"
+    },
+    {
+      "id": "YInMnBlue-007",
+      "name": "YInMn Blue Pigment (YIn₁₋ₓMnₓO₃)",
+      "layer": 0,
+      "color_stability_1000C": true,
+      "shared_by": ["CSMQuantum-03", "35 products"],
+      "supplier": "Shepherd Color Company",
+      "unit_cost_usd": 75.00,
+      "unit": "kg",
+      "note": "From CSMQuantum/03-YInMn-Blue-Crystal-Field"
+    },
+    {
+      "id": "Aerogel-PS-008",
+      "name": "Polyimide-Silica Aerogel Network",
+      "layer": 5,
+      "thermal_conductivity_W_mK": 0.015,
+      "shared_by": ["CSMQuantum-05", "14 products"],
+      "supplier": "In-house / Aspen Aerogels",
+      "unit_cost_usd": 250.00,
+      "unit": "m²",
+      "note": "From CSMQuantum/05-Aerogel-Network-Optimization"
+    },
+    {
+      "id": "PVDFTrFE-009",
+      "name": "PVDF-TrFE Piezoelectric Film",
+      "layer": 4,
+      "d33_pC_N": -28,
+      "shared_by": ["CSMQuantum-10", "10 products"],
+      "supplier": "In-house / Solvay",
+      "unit_cost_usd": 350.00,
+      "unit": "kg",
+      "note": "From CSMQuantum/10-PVDF-Piezoelectric-Domains"
+    },
+    {
+      "id": "CoAl2O4-010",
+      "name": "CoAl₂O₄ Spinel Engineering Pigment",
+      "layer": 0,
+      "shared_by": ["CSMQuantum-09", "35 products"],
+      "supplier": "Shepherd Color Company",
+      "unit_cost_usd": 45.00,
+      "unit": "kg",
+      "note": "From CSMQuantum/09-CoAl2O4-Spinel-Engineering"
+    },
+    {
+      "id": "MAXPhase-011",
+      "name": "MAX Phase Ti₃AlC₂ Discovery",
+      "layer": 5,
+      "shared_by": ["CSMQuantum-06", "18 products"],
+      "supplier": "In-house / Drexel",
+      "unit_cost_usd": 180.00,
+      "unit": "kg",
+      "note": "From CSMQuantum/06-MAX-Phase-Discovery-Space; discovery-stage"
+    },
+    {
+      "id": "MRF-140CG-012",
+      "name": "MRF-140CG Magnetorheological Fluid (Particle Dynamics)",
+      "layer": 3,
+      "yield_stress_kPa": 80,
+      "off_state_viscosity_Pa_s": 0.28,
+      "shared_by": ["CSMQuantum-12", "8 products"],
+      "supplier": "Lord Corporation",
+      "unit_cost_usd": 250.00,
+      "unit": "kg",
+      "note": "From CSMQuantum/12-MR-Fluid-Particle-Dynamics"
     }
   ],
   "cross_pollination_pairs": [
@@ -87,7 +193,25 @@
     {"pair": ["PET-SAFE", "CERVICAL-GUARD"], "shared": "CNC aerogel precursor", "savings_pct": 18},
     {"pair": ["Phantom-MK1", "Stellar-Tint"], "shared": "Aperture windows", "savings_pct": 20},
     {"pair": ["Ascension-Seraphim", "Silence-Block"], "shared": "82 Hz-tuned LRAM cockpit", "savings_pct": 25},
-    {"pair": ["Ascension-Seraphim", "Fluid-Damp"], "shared": "MR collective + GCS joysticks", "savings_pct": "integration"}
+    {"pair": ["Ascension-Seraphim", "Fluid-Damp"], "shared": "MR collective + GCS joysticks", "savings_pct": "integration"},
+    {"pair": ["CSMQuantum-02", "Aegis-C"], "shared": "ZrB₂-SiC composite", "savings_pct": 25},
+    {"pair": ["CSMQuantum-05", "Cloud-Nest"], "shared": "Aerogel thermal + acoustic", "savings_pct": 30},
+    {"pair": ["CSMQuantum-09", "CSMQuantum-03"], "shared": "YInMn Blue + CoAl₂O₄ spinel pigment", "savings_pct": 15},
+    {"pair": ["CSMQuantum-10", "CSMQuantum-04"], "shared": "PVDF-TrFE + perovskite quantum dot integration", "savings_pct": "discovery"},
+    {"pair": ["CSMQuantum-12", "MRF-140CG-003"], "shared": "MR fluid particle dynamics", "savings_pct": 18},
+    {"pair": ["12_AegisOutfit", "CSMFAB-016"], "shared": "Non-conductive door hardware", "savings_pct": 35},
+    {"pair": ["12_AegisOutfit", "CSMFAB-017"], "shared": "Dielectric rope & rigging", "savings_pct": 30},
+    {"pair": ["12_AegisOutfit", "CSMFAB-024"], "shared": "Grounding-sole footwear", "savings_pct": 28},
+    {"pair": ["12_AegisOutfit", "CSMFAB-026"], "shared": "Vibra-Volt pedal cover", "savings_pct": 25},
+    {"pair": ["12_AegisOutfit", "CSMFAB-028"], "shared": "Cloud-Nest aerogel child seat base", "savings_pct": 34},
+    {"pair": ["CSMMetal", "CSMFAB-026"], "shared": "Vibration mitigation", "savings_pct": 20},
+    {"pair": ["CSMMetal", "CSMFAB-005"], "shared": "Microwave-proof material", "savings_pct": 22},
+    {"pair": ["CSMPro", "CSMFAB-P1-02"], "shared": "Bay Bridge resilience retrofit", "savings_pct": 40},
+    {"pair": ["CSMPro", "CSMFAB-P1-03"], "shared": "Pittsburgh bridge retrofit", "savings_pct": 40},
+    {"pair": ["CSMPro", "CSMFAB-P2-05"], "shared": "Fuel infrastructure", "savings_pct": 30},
+    {"pair": ["CSMPro", "CSMFAB-P2-06"], "shared": "Rail protection", "savings_pct": 35},
+    {"pair": ["CSMPro", "CSMFAB-P2-07"], "shared": "Transport resilience", "savings_pct": 32},
+    {"pair": ["CSMPro", "CSMFAB-P2-08"], "shared": "Water system resilience", "savings_pct": 28}
   ],
   "ci_detection": {
     "trigger": "on.push → BOM file changes detected",
