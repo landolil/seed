@@ -1,13 +1,23 @@
 ## Project Overview
 # CSMFAB
 
-**Category:** TopLevel | **State:** Whole Project | **Files:** 8013
+**Category:** TopLevel | **State:** Whole Project | **Files:** 10801
 
 **Parent Project:** Top-Level
 
 ### Summary
 
-# Seed \u2014 Massive fabrication research portfolio (8000+ files) covering Project AEGIS (Carrington event resilience), drone designs, smart materials, home hardening, and 100+ individual research projects
+# Seed \u2014 Massive fabrication research portfolio (10,800+ files) covering Project AEGIS (Carrington event resilience), drone designs, smart materials, home hardening, and 100+ individual research projects
+
+**Consolidation (2026-11-07):** 2,376 files from 6 external repositories merged into `CSMFAB/_CONSOLIDATED/`:
+- `01_AegisOutfit/` (499 files) — Renaissance textile engineering
+- `02_Metal/` (85 files) — Metal fabrication & vibration mitigation
+- `03_Pro/` (1,376 files) — Infrastructure, vessels, robotics
+- `04_Quantum/` (41 files) — Materials R&D (MXene, ZrB2-SiC, aerogel, etc.)
+- `05_FinancialAim/` (5 files) — Business tier plans
+- `06_MinesMagnets/` (370 files) — Magnet fabrication
+
+BOM registry expanded from 5 \u2192 13 materials. Cross-pollination pairs: 16 \u2192 32.
 
 ---
 ## Architecture & Design — Williams Heuristic
@@ -181,10 +191,10 @@ git add -A && git commit -m '<type>: <description>' && git push
 
 ### Project Statistics
 
-- **Total Files**: 8013
-- **File Types**: .md: 7755, .pdf: 256, .zip: 37, .html: 34, .sh: 20, .xlsx: 4, .csv: 1, .json: 1, .docx: 1
+- **Total Files**: 10801
+- **File Types**: .md: 10571, .pdf: 256, .zip: 37, .html: 34, .sh: 20, .xlsx: 4, .csv: 1, .json: 1, .docx: 1
 - **Languages**: Markdown: 7755, HTML: 34, Shell: 20, JSON: 1
-- **Key Directories**: 97
+- **Key Directories**: 103
 
 ### Related Projects
 
