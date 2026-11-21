@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>BOUNCE_OVERVIEW</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">BOUNCE_OVERVIEW</h1>
+</header>
+<h1 id="bounce-a-nontechnical-overview">BOUNCE: A Nontechnical
+Overview</h1>
+<p><strong>Document date:</strong> November 20, 2026
+<strong>Purpose:</strong> Explain what BOUNCE is, what it can
+demonstrate today, and how it might be considered alongside certified
+aviation services.</p>
+<h2 id="executive-summary">Executive summary</h2>
+<p>BOUNCE is an Android application that combines phone sensors and
+radio information with a 3D on-screen view. It can show a user&#39;s or an
+authorized vehicle&#39;s GPS position, travel trail, orientation, Wi-Fi
+access points, and Bluetooth devices. It uses an Android WebView to
+connect Java-based phone features to a Three.js interface.</p>
+<p>BOUNCE is an experimental situational-awareness and visualization
+project. It is <strong>not</strong> an ADS-B system, an aviation
+transponder, an ADS-B In receiver, a certified collision-avoidance
+system, or a substitute for approved FAA equipment.</p>
+<p>The project could potentially serve as:</p>
+<ol type="1">
+<li>A <strong>personal participant option</strong> for people who
+voluntarily opt into sharing the position of their own phone or
+vehicle.</li>
+<li>A <strong>digital taxi or airport fleet option</strong> for
+organizationally authorized vehicles that send managed telemetry.</li>
+<li>A future interface for approved, compatible broadcasts from ground
+and, later, maritime or aeronautical assets.</li>
+</ol>
+<p>These would be supplemental options, not replacements for existing
+certified equipment.</p>
+<h2 id="what-bounce-documents-as-current-capabilities">What BOUNCE
+documents as current capabilities</h2>
+<p>The repository&#39;s detailed documentation describes the following
+implemented or historically documented features:</p>
+<ul>
+<li>An Android WebView bridge between Java and JavaScript</li>
+<li>A Three.js 3D scene with reference grids, vehicle markers, trails,
+and camera modes</li>
+<li>GPS latitude, longitude, altitude, heading, speed, and timestamp
+updates</li>
+<li>Wi-Fi scanning and RSSI/distance or zone indicators</li>
+<li>Bluetooth Low Energy scanning and spatial/trajectory displays</li>
+<li>Accelerometer, magnetometer, and gyroscope orientation</li>
+<li>Sensor filtering and described positioning algorithms, including
+Kalman, EKF, particle, HMM, trilateration, and sensor-fusion
+concepts</li>
+<li>A Wi-Fi Direct broadcast function and 4-slot SSID rotation</li>
+<li>Visual trails with a limited 2000-point history</li>
+</ul>
+<p>These descriptions come from project articles and forensic histories
+of app versions; they are claims in repository documentation. They do
+<strong>not</strong> establish aviation-grade accuracy, reliability,
+cybersecurity, certification, or field performance.</p>
+<p>The distributed BOUNCE project also includes APKs in the <a href="https://github.com/landolil/toys/tree/main/AppsGames/ANDROID/BOUNCE">Landolil/toys
+BOUNCE path</a>. Detailed source articles are in the <a href="https://github.com/PrimeCarrPod/Seed/tree/main/CSMApps/Bounce/root_articles">PrimeCarrPod/Seed
+BOUNCE root_articles</a>.</p>
+<h2 id="what-ads-b-means">What ADS-B means</h2>
+<p>The FAA <a href="https://www.faa.gov/air_traffic/technology/equipadsb">Equip
+ADS-B</a> reference distinguishes between:</p>
+<ul>
+<li><strong>ADS-B Out:</strong> broadcasts an aircraft&#39;s position and
+other information.</li>
+<li><strong>ADS-B In:</strong> provides participating aircraft and
+pilots with situational-awareness information.</li>
+</ul>
+<p>ADS-B use is part of a separate aviation equipment and service
+ecosystem. BOUNCE can potentially display position data supplied by an
+approved source, but it does not itself provide ADS-B Out or ADS-B In
+capability.</p>
+<h2 id="the-plane-locator-policy-context">The plane-locator policy
+context</h2>
+<p>A Nov. 18, 2026 <a href="https://www.bastillepost.com/global/article/6370635-congress-agrees-on-civilian-plane-locator-mandate-after-deadly-american-airlines-black-hawk-crash">Bastille
+Post article</a> reports that Congress agreed on a civilian
+plane-locator mandate following the deadly American Airlines–Black Hawk
+crash. The report says that provisions still need resolution and that
+legislation must pass. Therefore, this proposal should not describe the
+reported agreement as enacted law or presume a final rule.</p>
+<p>Within a future authorized policy, the senators named in the
+request—Sen. Ted Cruz and Sen. Maria Cantwell—could evaluate options for
+a broader civilian plane-locator requirement. BOUNCE could inform the
+analysis only as an exploratory data or user-interface concept. It
+should not be represented as an existing solution to the mandate.</p>
+<h2 id="options-b-and-c">Options B and C</h2>
+<h3 id="option-b-voluntary-personal-cell-phone-telemetry">Option B:
+voluntary personal cell-phone telemetry</h3>
+<p>The phone could send its own location if and only if the participant
+explicitly opts in, sees what is shared, chooses whether sharing is
+active, and can stop it. This is supplemental data for research or
+authorized applications.</p>
+<p>It does not justify detecting or identifying nearby passenger phones,
+collecting location without consent, or inferring activity from
+arbitrary radio scans. Personal participation would require transparent
+permissions, retention limits, accountable operators, and protection
+against misuse.</p>
+<h3 id="option-c-authorized-airport-and-taxi-vehicles">Option C:
+authorized airport and taxi vehicles</h3>
+<p>Digital taxi-cell phones or airport-owned devices could be issued to
+participating vehicles by an airport or fleet operator. The organization
+would have to define ownership, authorization, and control of each
+telemetry stream. Position data could complement certified ground-radar,
+ADS-B, airport equipment, and established fleet systems.</p>
+<p>Airport vehicles and taxis are more suitable participants than
+arbitrary phones because they have:</p>
+<ul>
+<li>an accountable organization,</li>
+<li>a known vehicle asset,</li>
+<li>defined use and operating rules,</li>
+<li>opportunities for maintenance and calibration,</li>
+<li>and a managed security lifecycle.</li>
+</ul>
+<h2 id="the-broader-broadcasting-assets-vision">The broader
+broadcasting-assets vision</h2>
+<p>Future situational awareness might include:</p>
+<ul>
+<li>authorized airport and ground-fleet vehicles,</li>
+<li>vessels with compatible broadcast and receiver infrastructure,</li>
+<li>aircraft and their certified ADS-B or other approved systems,</li>
+<li>and approved land or sea assets participating in standards-based
+networks.</li>
+</ul>
+<p>This “all vessels and vehicles” vision is not technically achievable
+simply by adding an app. It requires compatible broadcasts, deployed
+receivers, network coverage, participation, legal authority, secure
+identities, reliable time and position, and trustworthy data fusion.
+Ground and maritime integration would therefore come later, after
+relevant standards and operator requirements are established.</p>
+<h2 id="why-a-staged-approach-is-necessary">Why a staged approach is
+necessary</h2>
+<p>The first goal should be to demonstrate software and operational
+value under controlled conditions. The next goal should be independent
+accuracy and safety verification. Only after a regulator or operator has
+approved a use case should the concept move toward operational
+trials.</p>
+<p>Stage gates should cover:</p>
+<ul>
+<li>accuracy and latency,</li>
+<li>availability and failover,</li>
+<li>privacy and consent,</li>
+<li>cyber and radio security,</li>
+<li>interoperability,</li>
+<li>legal authority,</li>
+<li>human factors,</li>
+<li>and independent certification or approval where applicable.</li>
+</ul>
+<p>Until those gates are passed, BOUNCE should be labeled as an
+experimental visualization and supplemental telemetry tool—not as an
+aviation safety service.</p>
+<h2 id="source-links">Source links</h2>
+<ul>
+<li><a href="https://github.com/landolil/toys/tree/main/AppsGames/ANDROID/BOUNCE">BOUNCE
+hosted repository and APKs</a></li>
+<li><a href="https://github.com/PrimeCarrPod/Seed/tree/main/CSMApps/Bounce/root_articles">Detailed
+BOUNCE source articles</a></li>
+<li><a href="https://github.com/landolil/seed/tree/main/CSMApps/Bounce">Landolil/Seed
+BOUNCE mirror</a></li>
+<li><a href="https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/features-history.md">Seed
+work-in-progress feature history</a></li>
+<li><a href="https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/features-roadmap.md">Seed
+work-in-progress feature roadmap</a></li>
+<li><a href="https://github.com/PrimeCarrPod/Seed/tree/main/CSMApps/Bounce/work-in-progress/BOUNCE_EVOLUTION">BOUNCE
+evolution documents</a> (excluding the <code>pieces</code> folder)</li>
+<li><a href="https://www.faa.gov/air_traffic/technology/equipadsb">FAA
+Equip ADS-B</a></li>
+<li><a href="https://www.bastillepost.com/global/article/6370635-congress-agrees-on-civilian-plane-locator-mandate-after-deadly-american-airlines-black-hawk-crash">Nov.
+18, 2026 Bastille Post report</a></li>
+</ul>
+<p>Repository sources reviewed:</p>
+<ul>
+<li><a href="../README.md"><code>CSMApps/Bounce/README.md</code></a></li>
+<li><a href="../root_articles/A1-01_HTML_Aspects_ThreeJS_Visualization.md"><code>CSMApps/Bounce/root_articles/A1-01_HTML_Aspects_ThreeJS_Visualization.md</code></a></li>
+<li><a href="../root_articles/A2-02_Android_Main_Features_Radio_Positioning.md"><code>CSMApps/Bounce/root_articles/A2-02_Android_Main_Features_Radio_Positioning.md</code></a></li>
+<li><a href="../root_articles/A3-03_Connection_Pathways_Bidirectional.md"><code>CSMApps/Bounce/root_articles/A3-03_Connection_Pathways_Bidirectional.md</code></a></li>
+<li><a href="../root_articles/A7-07_Future_Progress_Roadmap_P0_P3.md"><code>CSMApps/Bounce/root_articles/A7-07_Future_Progress_Roadmap_P0_P3.md</code></a></li>
+<li><a href="../work-in-progress/BOUNCE_EVOLUTION/A9-09_Working_Features_Versions_History.md"><code>CSMApps/Bounce/work-in-progress/BOUNCE_EVOLUTION/A9-09_Working_Features_Versions_History.md</code></a></li>
+</ul>
+</body>
+</html>
