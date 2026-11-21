@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>BOUNCE_DEEP_DIVE_PLAN</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">BOUNCE_DEEP_DIVE_PLAN</h1>
+</header>
+<h1 id="bounce-deep-dive-plan">BOUNCE Deep-Dive Plan</h1>
+<p><strong>Document date:</strong> November 20, 2026</p>
+<p><strong>Scope:</strong> A phased, non-certified research plan for
+using BOUNCE concepts alongside existing aviation systems
+<strong>Status:</strong> Proposal and feasibility plan—not an
+implementation commitment or certification claim</p>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This document explains what BOUNCE does today and defines a feasible
+path for evaluating it as a supplemental data source for authorized
+aviation-related organizations.</p>
+<p>The plan is responsive to a future policy concept described in the
+Nov. 18, 2026 Bastille Post report, <a href="https://www.bastillepost.com/global/article/6370635-congress-agrees-on-civilian-plane-locator-mandate-after-deadly-american-airlines-black-hawk-crash">“Congress
+agrees on civilian plane-locator mandate after deadly American Airlines
+Black Hawk crash”</a>. The report indicates congressional agreement but
+also says that provisions still need resolution and legislation passage.
+This plan therefore treats the proposal as an unfinalized policy
+context, not as enacted law.</p>
+<p>No language in this plan should imply that a phone or BOUNCE
+becomes:</p>
+<ul>
+<li>an ADS-B Out broadcaster,</li>
+<li>an ADS-B In receiver,</li>
+<li>a transponder,</li>
+<li>an alternate means of compliance,</li>
+<li>a certified surveillance source,</li>
+<li>or a collision-avoidance system.</li>
+</ul>
+<p>The FAA <a href="https://www.faa.gov/air_traffic/technology/equipadsb">Equip
+ADS-B</a> reference describes ADS-B Out as broadcasting aircraft
+position and ADS-B In as providing aircraft and pilots with
+situational-awareness information.</p>
+<h2 id="2-documented-current-state">2. Documented current state</h2>
+<p>The detailed BOUNCE articles and forensic histories document an
+Android WebView application using Java and JavaScript/Three.js.</p>
+<h3 id="21-documented-android-capabilities">2.1 Documented Android
+capabilities</h3>
+<ul>
+<li><code>MainActivity</code> receives GPS and sensor data.</li>
+<li><code>WebView.addJavascriptInterface</code> creates a bidirectional
+Java/JavaScript bridge.</li>
+<li>Java sends Wi-Fi, BLE, GPS, orientation, broadcast, trail, and
+algorithm updates to HTML.</li>
+<li>JavaScript sends camera, fleet, vehicle, broadcast, and user-control
+requests back to Android.</li>
+<li>Android requests runtime permissions for location and radio
+access.</li>
+<li>A wake lock can support trail recording while the screen is
+off.</li>
+</ul>
+<h3 id="22-documented-visualization-capabilities">2.2 Documented
+visualization capabilities</h3>
+<ul>
+<li>Three.js scene, reference grid, vehicle avatar, and beacon
+objects</li>
+<li>Orbit, fly-through, and chase-point-of-view camera modes</li>
+<li>GPS trail recording and 2000-point FIFO smoothing</li>
+<li>Wi-Fi node fields, BLE spatial objects, labels, and trails</li>
+<li>Fleet and vehicle mode controls</li>
+</ul>
+<h3 id="23-documented-positioning-and-radio-concepts">2.3 Documented
+positioning and radio concepts</h3>
+<ul>
+<li>Wi-Fi RSSI and BLE RSSI zone/distance calculations</li>
+<li>RSSI Kalman filtering</li>
+<li>Trilateration and weighted least-squares concepts</li>
+<li>EKF and particle-filter concepts</li>
+<li>HMM zone classification</li>
+<li>Sensor-fusion orientation</li>
+<li>Wi-Fi RTT, UWB, or AP self-calibration as roadmap concepts where not
+already implemented</li>
+</ul>
+<p>The project also documents Wi-Fi Direct and 4-slot SSID broadcast
+behavior. These mechanisms are separate from aviation ADS-B and are not
+evidence of standards-compliant aircraft surveillance.</p>
+<h3 id="24-evidence-status">2.4 Evidence status</h3>
+<p>The repository records historical versions and forensic analysis, but
+the documents contain claimed performance figures and intended behavior.
+Individual claims should not be treated as independent verification.
+Accuracy, battery use, latency, scan availability, background behavior,
+compatibility, and safety must be measured on representative hardware
+and software.</p>
+<h2 id="3-boundaries-and-use-cases">3. Boundaries and use cases</h2>
+<h3 id="31-personal-phoneoption-b">3.1 Personal phone—Option B</h3>
+<p>Only a participant who voluntarily opts in may share their own device
+or vehicle position. The participant must be able to view, pause, and
+revoke sharing. The service should support organization-approved apps or
+managed devices and should not scan, identify, or track unrelated
+passenger devices.</p>
+<p>Potential uses:</p>
+<ul>
+<li>research on authorized low-speed or ground-movement telemetry,</li>
+<li>controlled airport events with enrolled participants,</li>
+<li>user-initiated emergency or assistance workflows approved by the
+responsible organization.</li>
+</ul>
+<p>Phones must not be assumed to have reliable aviation accuracy or
+continuity. In particular, an airborne phone may lose view of GNSS, have
+poor time or sensor quality, or be used outside its defined scope.</p>
+<h3 id="32-airport-or-taxi-vehiclesoption-c">3.2 Airport or taxi
+vehicles—Option C</h3>
+<p>This is the stronger near-term concept. An airport, taxi fleet, or
+ground-operator could authorize and issue devices to known vehicles. It
+would control:</p>
+<ul>
+<li>device identity and enrollment,</li>
+<li>driver or operator acknowledgment,</li>
+<li>maintenance and calibration,</li>
+<li>data retention,</li>
+<li>approved operational display,</li>
+<li>and revocation.</li>
+</ul>
+<p>Authorized vehicle telemetry could be fused with existing airport
+systems, ADS-B services, ground radar or surface surveillance, fleet
+dispatch, and video or other approved sources. This data may support
+operational awareness or dispatch planning, but it should not be used as
+the sole source for movement control or separation decisions.</p>
+<h3 id="33-future-broadcasting-assets">3.3 Future broadcasting
+assets</h3>
+<p>A later phase might integrate compatible broadcasts from authorized
+airport assets, land vehicles, vessels, or aircraft systems. This vision
+is standards-driven and requires:</p>
+<ul>
+<li>a compatible broadcast or service,</li>
+<li>a deployed receive and relay network,</li>
+<li>enough coverage and availability,</li>
+<li>a data contract and time source,</li>
+<li>secure identity,</li>
+<li>legal authority,</li>
+<li>accountable ownership,</li>
+<li>and methods to detect stale or falsified tracks.</li>
+</ul>
+<p>Broad statements about “all vessels” are not technically achievable
+without these dependencies. Land and maritime data may require separate
+standards, authorities, interfaces, and safety cases.</p>
+<h2 id="4-architectural-proposal">4. Architectural proposal</h2>
+<pre class="text"><code>Participant or managed device
+    |  explicit opt-in / managed enrollment
+    v
+BOUNCE capture and local validation
+    |  GNSS, sensors, radio observations, timestamps
+    v
+Authenticated participant gateway
+    |  transport encryption, identity, policy checks
+    v
+Data quality and correlation service
+    |  timestamp, accuracy, freshness, duplicate/spoof checks
+    v
+Operator situational-awareness display
+    |
+    +--&gt; existing ADS-B / certified aviation systems
+    +--&gt; airport or fleet tracking systems
+    +--&gt; audit, retention, and incident workflows</code></pre>
+<h3 id="41-core-components">4.1 Core components</h3>
+<ol type="1">
+<li><strong>Capture module:</strong> GPS, sensors, and radio
+observations with source quality and timestamps.</li>
+<li><strong>Local safety and privacy module:</strong> consent state,
+sharing state, sensitive-field minimization, and fail-safe
+controls.</li>
+<li><strong>Authenticated gateway:</strong> organization-issued
+identities and transport security.</li>
+<li><strong>Quality service:</strong> reject stale, impossible,
+duplicate, or low-confidence observations.</li>
+<li><strong>Correlation service:</strong> fuse only when source
+identities and reference frames are trustworthy.</li>
+<li><strong>Visualization:</strong> Three.js or an operator-approved
+interface that clearly labels source, confidence, freshness, and
+limitations.</li>
+<li><strong>Audit service:</strong> immutable operational events, access
+controls, and incident investigation.</li>
+</ol>
+<h3 id="42-information-model">4.2 Information model</h3>
+<p>Each report should carry:</p>
+<ul>
+<li>a stable but appropriately scoped participant or asset ID,</li>
+<li>source type,</li>
+<li>latitude/longitude or a reference frame,</li>
+<li>altitude only when available and defined,</li>
+<li>uncertainty,</li>
+<li>timestamp and received time,</li>
+<li>heading and speed only when defined,</li>
+<li>provenance,</li>
+<li>consent or authorization state,</li>
+<li>and a validity or expiration window.</li>
+</ul>
+<p>Raw IDs and personal identifiers should be minimized or separated
+from operational data. No endpoint or display should infer a person&#39;s
+identity from nearby Wi-Fi or BLE observations.</p>
+<h3 id="43-ads-b-integration">4.3 ADS-B integration</h3>
+<p>ADS-B feeds or certified operator systems should remain separate,
+authoritative sources. An integration should preserve source provenance
+and avoid merging a phone estimate into an ADS-B aircraft position as if
+it were identical.</p>
+<p>The display could show:</p>
+<ul>
+<li>a certified track,</li>
+<li>a supplemental track,</li>
+<li>track correlation confidence,</li>
+<li>source freshness,</li>
+<li>and the distinction in labels and symbols.</li>
+</ul>
+<p>Human operators must not interpret a phone-derived estimate as a
+certified aircraft position.</p>
+<h2 id="5-phased-implementation">5. Phased implementation</h2>
+<h3 id="phase-0-scope-governance-and-baseline">Phase 0: scope,
+governance, and baseline</h3>
+<p><strong>Work</strong></p>
+<ul>
+<li>appoint an accountable aviation/airport sponsor,</li>
+<li>define the exact non-safety use case,</li>
+<li>identify applicable laws and authorities,</li>
+<li>establish threat and privacy models,</li>
+<li>inventory current BOUNCE behavior,</li>
+<li>freeze a software baseline,</li>
+<li>select representative Android devices.</li>
+</ul>
+<p><strong>Exit criteria</strong></p>
+<ul>
+<li>written use-case and anti-abuse rules,</li>
+<li>privacy and legal sign-off,</li>
+<li>data dictionary,</li>
+<li>system boundary,</li>
+<li>and independent reviewers named.</li>
+</ul>
+<p><strong>No-go trigger:</strong> no approved organization, no
+authority, or an intent to track arbitrary phones.</p>
+<h3 id="phase-1-offline-and-simulator-demonstration">Phase 1: offline
+and simulator demonstration</h3>
+<p><strong>Work</strong></p>
+<ul>
+<li>build recorded and synthetic data fixtures,</li>
+<li>test the WebView/Three.js display,</li>
+<li>verify trail rendering, source labels, stale-data handling, and
+failover,</li>
+<li>unit-test positioning algorithms,</li>
+<li>compare documented behavior with actual device measurements.</li>
+</ul>
+<p><strong>Exit criteria</strong></p>
+<ul>
+<li>reproducible test scenarios,</li>
+<li>documented accuracy and limitations,</li>
+<li>no unrequested personal-data collection,</li>
+<li>audit and source provenance demonstrated,</li>
+<li>independent code review complete.</li>
+</ul>
+<p><strong>No-go trigger:</strong> the demo cannot distinguish
+supplemental tracks from certified tracks.</p>
+<h3 id="phase-2-controlled-organizational-vehicle-pilot">Phase 2:
+controlled organizational vehicle pilot</h3>
+<p><strong>Work</strong></p>
+<ul>
+<li>enroll airport-owned or authorized fleet vehicles,</li>
+<li>deploy managed devices with cryptographic identities,</li>
+<li>collect telemetry only inside the approved route and operating
+area,</li>
+<li>run the gateway and quality service,</li>
+<li>display alongside, but clearly separate from, existing approved
+systems.</li>
+</ul>
+<p><strong>Exit criteria</strong></p>
+<ul>
+<li>stable identity and revocation,</li>
+<li>demonstrated accuracy against survey or approved reference
+data,</li>
+<li>latency and availability metrics,</li>
+<li>incident response and maintenance processes,</li>
+<li>operator human-factors evaluation,</li>
+<li>no adverse operational conclusion based solely on BOUNCE.</li>
+</ul>
+<p><strong>No-go trigger:</strong> accuracy or authorization does not
+meet agreed pilot requirements.</p>
+<h3 id="phase-3-limited-voluntary-personal-participation">Phase 3:
+limited voluntary personal participation</h3>
+<p><strong>Work</strong></p>
+<ul>
+<li>permit explicit participant opt-in,</li>
+<li>expose sharing controls and retention,</li>
+<li>test on a narrowly approved research use case,</li>
+<li>provide clear consent language and stop controls,</li>
+<li>conduct privacy and security testing,</li>
+<li>restrict collection to the participating user&#39;s own device and
+vehicle.</li>
+</ul>
+<p><strong>Exit criteria</strong></p>
+<ul>
+<li>successful consent and revocation tests,</li>
+<li>minimal data collection,</li>
+<li>secure identity separation,</li>
+<li>abuse and deletion procedures,</li>
+<li>legal and privacy approval,</li>
+<li>no arbitrary nearby-device identification.</li>
+</ul>
+<p><strong>No-go trigger:</strong> required consent or data minimization
+cannot be enforced.</p>
+<h3 id="phase-4-standards-and-authority-integration">Phase 4: standards
+and authority integration</h3>
+<p><strong>Work</strong></p>
+<ul>
+<li>engage FAA, airport, fleet, and standards stakeholders,</li>
+<li>assess ADS-B and existing surveillance interfaces,</li>
+<li>conduct interoperability testing,</li>
+<li>define coverage, availability, and continuity requirements,</li>
+<li>evaluate whether land and maritime sources have relevant
+standards.</li>
+</ul>
+<p><strong>Exit criteria</strong></p>
+<ul>
+<li>approved interface and test standard,</li>
+<li>formal data-quality and failure requirements,</li>
+<li>regulatory and spectrum/operating authority,</li>
+<li>independently verified safety case if safety use is proposed.</li>
+</ul>
+<p><strong>No-go trigger:</strong> a requirement depends on
+certification or authority that is unavailable.</p>
+<h3 id="phase-5-operational-evaluation">Phase 5: operational
+evaluation</h3>
+<p><strong>Work</strong></p>
+<ul>
+<li>conduct authorized, supervised field evaluation,</li>
+<li>monitor false, stale, duplicated, or missing tracks,</li>
+<li>execute degraded-mode and emergency stop tests,</li>
+<li>maintain fallback to certified systems,</li>
+<li>publish de-identified results and limitations.</li>
+</ul>
+<p><strong>Exit criteria</strong></p>
+<ul>
+<li>measurable improvement to the approved use case,</li>
+<li>no unsafe reliance on supplemental data,</li>
+<li>operator training complete,</li>
+<li>lifecycle and incident ownership established.</li>
+</ul>
+<p>Operational safety-critical adoption must receive the required
+certification or approval; this plan does not assume a fast track.</p>
+<h2 id="6-safety-and-reliability">6. Safety and reliability</h2>
+<h3 id="61-required-guarantees">6.1 Required guarantees</h3>
+<p>BOUNCE-derived tracks must:</p>
+<ul>
+<li>include source, age, and uncertainty,</li>
+<li>fail visibly instead of silently,</li>
+<li>be excluded or downgraded when stale,</li>
+<li>be isolated from certified systems,</li>
+<li>support emergency disable,</li>
+<li>preserve fallback operations,</li>
+<li>and have a documented maintenance and update process.</li>
+</ul>
+<h3 id="62-test-categories">6.2 Test categories</h3>
+<ul>
+<li>GNSS loss or jump,</li>
+<li>phone OS position spoofing,</li>
+<li>radio noise and multipath,</li>
+<li>clock drift,</li>
+<li>network loss,</li>
+<li>replay and duplicate reports,</li>
+<li>device restart,</li>
+<li>permission revocation,</li>
+<li>tampering,</li>
+<li>denial of service,</li>
+<li>battery exhaustion,</li>
+<li>app crash,</li>
+<li>stale track on WebView display,</li>
+<li>conflict between sources,</li>
+<li>and operator misinterpretation.</li>
+</ul>
+<h3 id="63-performance-measures">6.3 Performance measures</h3>
+<p>At minimum, report:</p>
+<ul>
+<li>horizontal and vertical uncertainty,</li>
+<li>95th-percentile update latency,</li>
+<li>stale-track rate,</li>
+<li>availability,</li>
+<li>false track rate,</li>
+<li>missed track rate,</li>
+<li>correlation error,</li>
+<li>battery cost,</li>
+<li>device compatibility,</li>
+<li>and degradation under RF and network stress.</li>
+</ul>
+<p>No performance threshold should be copied from the project roadmap
+until it is independently measured.</p>
+<h2 id="7-privacy-and-participant-rights">7. Privacy and participant
+rights</h2>
+<p>The system must not provide a mechanism for covertly collecting or
+identifying:</p>
+<ul>
+<li>arbitrary passengers,</li>
+<li>unrelated pedestrians,</li>
+<li>nearby household or business devices,</li>
+<li>or any person who has not authorized sharing.</li>
+</ul>
+<p>Required controls:</p>
+<ul>
+<li>explicit consent,</li>
+<li>purpose limitation,</li>
+<li>data minimization,</li>
+<li>short and defined retention,</li>
+<li>deletion and export paths,</li>
+<li>audit of access,</li>
+<li>tenant or organization separation,</li>
+<li>pseudonymous IDs,</li>
+<li>local sharing controls,</li>
+<li>and a visible indicator whenever collection or upload is
+active.</li>
+</ul>
+<p>Airport or fleet participants should receive a device and role
+policy; personal users should receive a separate, plain-language privacy
+policy.</p>
+<h2 id="8-security">8. Security</h2>
+<p>Security requirements include:</p>
+<ul>
+<li>signed application builds,</li>
+<li>package integrity,</li>
+<li>secure storage for credentials,</li>
+<li>mutual or gateway-authenticated transport,</li>
+<li>certificate and key rotation,</li>
+<li>device enrollment and revocation,</li>
+<li>replay protection,</li>
+<li>server-side authorization,</li>
+<li>RBAC and least privilege,</li>
+<li>signed audit events,</li>
+<li>anomaly detection,</li>
+<li>rate limits,</li>
+<li>secure Android updates,</li>
+<li>and secure lifecycle and decommissioning.</li>
+</ul>
+<p>Wi-Fi/BLE scanning permissions create additional privacy and abuse
+risk. The implementation should collect only necessary observations,
+avoid persistent identifiers where possible, and never infer or track
+arbitrary people.</p>
+<h2 id="9-regulatory-and-interoperability-plan">9. Regulatory and
+interoperability plan</h2>
+<p>Before operational use, stakeholders must determine:</p>
+<ul>
+<li>whether the system is merely advisory or could influence
+decisions,</li>
+<li>which authority and rule set applies,</li>
+<li>whether any FCC, FAA, DOT, DOT/USCG, airport, or local obligations
+apply,</li>
+<li>which spectrum or transmission technologies are permitted,</li>
+<li>whether ADS-B or other aviation standards are involved,</li>
+<li>whether the data is sufficient for the stated use,</li>
+<li>and what assurance, testing, and certification is required.</li>
+</ul>
+<p>ADS-B In and Out are aviation-specific functions. BOUNCE does not
+become ADS-B compliant by receiving or visualizing an approved
+third-party feed.</p>
+<p>Interoperability work should prefer documented, standards-based
+interfaces and well-defined schemas. Proprietary SSIDs or direct device
+identifiers are not suitable as a universal air-ground or maritime
+standard.</p>
+<h2 id="10-verification-and-stage-gates">10. Verification and stage
+gates</h2>
+<p>No phase advances without evidence in a test report.</p>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Required evidence</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0 Governance</td>
+<td>Sponsor, authority, scope, privacy and security boundaries</td>
+<td>Proceed or stop</td>
+</tr>
+<tr>
+<td>G1 Software</td>
+<td>Reproducible tests and code baseline</td>
+<td>Proceed or stop</td>
+</tr>
+<tr>
+<td>G2 Data quality</td>
+<td>Independent accuracy and freshness measurements</td>
+<td>Proceed or stop</td>
+</tr>
+<tr>
+<td>G3 Fleet pilot</td>
+<td>Authorized vehicles, audit, degraded-mode tests</td>
+<td>Extend or stop</td>
+</tr>
+<tr>
+<td>G4 Phone pilot</td>
+<td>Consent, minimization, revocation, abuse review</td>
+<td>Extend or stop</td>
+</tr>
+<tr>
+<td>G5 Interoperability</td>
+<td>Standards and authority approvals</td>
+<td>Proceed or stop</td>
+</tr>
+<tr>
+<td>G6 Operational evaluation</td>
+<td>Independent validation, no unsafe sole-source reliance</td>
+<td>Limited approval or stop</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-cost-and-dependency-questions">11. Cost and dependency
+questions</h2>
+<p>Before implementation, sponsors should estimate:</p>
+<ul>
+<li>Android and device support matrix,</li>
+<li>airport or fleet integration effort,</li>
+<li>networking and coverage,</li>
+<li>identity and key lifecycle,</li>
+<li>privacy engineering,</li>
+<li>independent test and safety work,</li>
+<li>operator training,</li>
+<li>maintenance and updates,</li>
+<li>ADS-B or other approved feed licensing,</li>
+<li>and legal authority.</li>
+</ul>
+<p>The project must avoid assuming that phone availability is free
+coverage. Cellular connectivity, GNSS, power, OS restrictions, hardware
+variation, and background behavior create operational gaps.</p>
+<h2 id="12-long-term-land-air-and-sea-vision">12. Long-term land, air,
+and sea vision</h2>
+<p>Land and maritime integration should remain a future standards
+effort:</p>
+<ul>
+<li>land assets may include authorized fleets, rail, or
+infrastructure;</li>
+<li>air assets must use approved aviation data sources and systems;</li>
+<li>sea assets require maritime broadcast, receive, and authority
+frameworks;</li>
+<li>every source needs compatible identity, format, coverage, quality,
+and time systems.</li>
+</ul>
+<p>BOUNCE could provide a configurable visualization or experimental
+correlation layer, but it cannot itself make heterogeneous assets
+observable or interoperable.</p>
+<h2 id="13-sources">13. Sources</h2>
+<h3 id="primary-project-sources">Primary project sources</h3>
+<ul>
+<li><a href="https://github.com/landolil/toys/tree/main/AppsGames/ANDROID/BOUNCE">Landolil/toys
+BOUNCE hosted repository and APKs</a></li>
+<li><a href="https://github.com/PrimeCarrPod/Seed/tree/main/CSMApps/Bounce/root_articles">PrimeCarrPod/Seed
+BOUNCE root_articles</a></li>
+<li><a href="https://github.com/landolil/seed/tree/main/CSMApps/Bounce">Landolil/Seed
+BOUNCE mirror</a></li>
+<li><a href="https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/README.md">Seed
+work-in-progress README</a>, <a href="https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/features-history.md">feature
+history</a>, and <a href="https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/features-roadmap.md">feature
+roadmap</a></li>
+<li><a href="https://github.com/PrimeCarrPod/Seed/tree/main/CSMApps/Bounce/work-in-progress/BOUNCE_EVOLUTION">BOUNCE
+evolution documents</a> (excluding the <code>pieces</code> folder)</li>
+<li><a href="../README.md"><code>CSMApps/Bounce/README.md</code></a></li>
+<li><a href="../root_articles/A1-01_HTML_Aspects_ThreeJS_Visualization.md"><code>CSMApps/Bounce/root_articles/A1-01_HTML_Aspects_ThreeJS_Visualization.md</code></a></li>
+<li><a href="../root_articles/A2-02_Android_Main_Features_Radio_Positioning.md"><code>CSMApps/Bounce/root_articles/A2-02_Android_Main_Features_Radio_Positioning.md</code></a></li>
+<li><a href="../root_articles/A3-03_Connection_Pathways_Bidirectional.md"><code>CSMApps/Bounce/root_articles/A3-03_Connection_Pathways_Bidirectional.md</code></a></li>
+<li><a href="../root_articles/A7-07_Future_Progress_Roadmap_P0_P3.md"><code>CSMApps/Bounce/root_articles/A7-07_Future_Progress_Roadmap_P0_P3.md</code></a></li>
+<li><a href="../work-in-progress/BOUNCE_EVOLUTION/A9-09_Working_Features_Versions_History.md"><code>CSMApps/Bounce/work-in-progress/BOUNCE_EVOLUTION/A9-09_Working_Features_Versions_History.md</code></a></li>
+</ul>
+<h3 id="external-references">External references</h3>
+<ul>
+<li><a href="https://www.faa.gov/air_traffic/technology/equipadsb">FAA
+Equip ADS-B</a></li>
+<li><a href="https://www.bastillepost.com/global/article/6370635-congress-agrees-on-civilian-plane-locator-mandate-after-deadly-american-airlines-black-hawk-crash">Bastille
+Post, Nov. 18, 2026, “Congress agrees on civilian plane locator mandate
+after deadly American Airlines Black Hawk crash”</a></li>
+</ul>
+</body>
+</html>
