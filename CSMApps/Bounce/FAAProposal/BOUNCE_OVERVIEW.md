@@ -102,6 +102,10 @@ Until those gates are passed, BOUNCE should be labeled as an experimental visual
 
 - [BOUNCE hosted repository and APKs](https://github.com/landolil/toys/tree/main/AppsGames/ANDROID/BOUNCE)
 - [Detailed BOUNCE source articles](https://github.com/PrimeCarrPod/Seed/tree/main/CSMApps/Bounce/root_articles)
+- [Landolil/Seed BOUNCE mirror](https://github.com/landolil/seed/tree/main/CSMApps/Bounce)
+- [Seed work-in-progress feature history](https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/features-history.md)
+- [Seed work-in-progress feature roadmap](https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/features-roadmap.md)
+- [BOUNCE evolution documents](https://github.com/PrimeCarrPod/Seed/tree/main/CSMApps/Bounce/work-in-progress/BOUNCE_EVOLUTION) (excluding the `pieces` folder)
 - [FAA Equip ADS-B](https://www.faa.gov/air_traffic/technology/equipadsb)
 - [Nov. 18, 2026 Bastille Post report](https://www.bastillepost.com/global/article/6370635-congress-agrees-on-civilian-plane-locator-mandate-after-deadly-american-airlines-black-hawk-crash)
 

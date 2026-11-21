@@ -407,11 +407,11 @@ No phase advances without evidence in a test report.
 |---|---|---|
 | G0 Governance | Sponsor, authority, scope, privacy and security boundaries | Proceed or stop |
 | G1 Software | Reproducible tests and code baseline | Proceed or stop |
-| G1 Data quality | Independent accuracy and freshness measurements | Proceed or stop |
-| G2 Fleet pilot | Authorized vehicles, audit, degraded-mode tests | Extend or stop |
-| G3 Phone pilot | Consent, minimization, revocation, abuse review | Extend or stop |
-| G4 Interoperability | Standards and authority approvals | Proceed or stop |
-| G5 Operational evaluation | Independent validation, no unsafe sole-source reliance | Limited approval or stop |
+| G2 Data quality | Independent accuracy and freshness measurements | Proceed or stop |
+| G3 Fleet pilot | Authorized vehicles, audit, degraded-mode tests | Extend or stop |
+| G4 Phone pilot | Consent, minimization, revocation, abuse review | Extend or stop |
+| G5 Interoperability | Standards and authority approvals | Proceed or stop |
+| G6 Operational evaluation | Independent validation, no unsafe sole-source reliance | Limited approval or stop |
 
 ## 11. Cost and dependency questions
 
@@ -447,6 +447,9 @@ BOUNCE could provide a configurable visualization or experimental correlation la
 
 - [Landolil/toys BOUNCE hosted repository and APKs](https://github.com/landolil/toys/tree/main/AppsGames/ANDROID/BOUNCE)
 - [PrimeCarrPod/Seed BOUNCE root_articles](https://github.com/PrimeCarrPod/Seed/tree/main/CSMApps/Bounce/root_articles)
+- [Landolil/Seed BOUNCE mirror](https://github.com/landolil/seed/tree/main/CSMApps/Bounce)
+- [Seed work-in-progress README](https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/README.md), [feature history](https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/features-history.md), and [feature roadmap](https://github.com/PrimeCarrPod/Seed/blob/main/CSMApps/Bounce/work-in-progress/features-roadmap.md)
+- [BOUNCE evolution documents](https://github.com/PrimeCarrPod/Seed/tree/main/CSMApps/Bounce/work-in-progress/BOUNCE_EVOLUTION) (excluding the `pieces` folder)
 - [`CSMApps/Bounce/README.md`](../README.md)
 - [`CSMApps/Bounce/root_articles/A1-01_HTML_Aspects_ThreeJS_Visualization.md`](../root_articles/A1-01_HTML_Aspects_ThreeJS_Visualization.md)
 - [`CSMApps/Bounce/root_articles/A2-02_Android_Main_Features_Radio_Positioning.md`](../root_articles/A2-02_Android_Main_Features_Radio_Positioning.md)
